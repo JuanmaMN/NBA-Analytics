@@ -1,0 +1,140 @@
+---
+title: "NBA Top 20 All-Time Points Leaders"
+author: "Juanma Martinez"
+date: "21st October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+## Set working directory
+
+
+library(dplyr)
+library(plotly)
+library(tidyr)
+library(scales)
+library(readr)
+
+## Upload data set - All_Time_Leaders_Points_Regular_Season  REGULAR SEASON
+
+library(readr)
+All_Time_Leaders_Points_Regular_Season <- read_csv("All_Time_Leaders_Points_Regular_Season.csv", 
+                                                   col_types = cols(`3 Point Field Goals Attempted` = col_number(), 
+                                                                    `3 Point Field Goals Made` = col_number(), 
+                                                                    `3 Point Field Goals Percentage` = col_number(), 
+                                                                    Assists = col_number(), Blocks = col_number(), 
+                                                                    `Defensive Rebounds` = col_number(), 
+                                                                    `Effective Field Goal Percentage` = col_number(), 
+                                                                    `Field Goal Percentage` = col_number(), 
+                                                                    `Field Goals Attempted` = col_number(), 
+                                                                    `Field Goals Made` = col_number(), 
+                                                                    `Free Throw Percentage` = col_number(), 
+                                                                    `Free Throws Attempted` = col_number(), 
+                                                                    `Free Throws Made` = col_number(), 
+                                                                    `Games Played` = col_number(), `Minutes Played` = col_number(), 
+                                                                    `Offensive Rebounds` = col_number(), 
+                                                                    Points = col_number(), Rebounds = col_number(), 
+                                                                    Steals = col_number(), `True Shooting Percentage` = col_number(), 
+                                                                    Turnovers = col_number()))
+head(All_Time_Leaders_Points_Regular_Season)
+
+## add and index column
+
+All_Time_Leaders_Points_Regular_Season_2 <-All_Time_Leaders_Points_Regular_Season %>% mutate(id = row_number())
+
+## Pass the first column to the number
+
+
+library(dplyr)
+All_Time_Leaders_Points_Regular_Season_2 <- All_Time_Leaders_Points_Regular_Season[, -(1)]
+rownames(All_Time_Leaders_Points_Regular_Season_2) <- All_Time_Leaders_Points_Regular_Season$PLAYER
+head(All_Time_Leaders_Points_Regular_Season_2)
+
+## Upload second data set PLAYOFFS
+
+library(readr)
+All_Time_Leaders_Points_Playoffs <- read_csv("All_Time_Leaders_Points_Playoffs.csv", 
+                                             col_types = cols(`3 Point Field Goals Attempted` = col_number(), 
+                                                              `3 Point Field Goals Made` = col_number(), 
+                                                              `3 Point Field Goals Percentage` = col_number(), 
+                                                              Assists = col_number(), Blocks = col_number(), 
+                                                              `Defensive Rebounds` = col_number(), 
+                                                              `Effective Field Goal Percentage` = col_number(), 
+                                                              `Field Goal Percentage` = col_number(), 
+                                                              `Field Goals Attempted` = col_number(), 
+                                                              `Field Goals Made` = col_number(), 
+                                                              `Free Throw Percentage` = col_number(), 
+                                                              `Free Throws Attempted` = col_number(), 
+                                                              `Free Throws Made` = col_number(), 
+                                                              `Games Played` = col_number(), `Minutes Played` = col_number(), 
+                                                              `Offensive Rebounds` = col_number(), 
+                                                              Points = col_number(), Rebounds = col_number(), 
+                                                              Steals = col_number(), `True Shooting Percentage` = col_number(), 
+                                                              Turnovers = col_number()))
+View(All_Time_Leaders_Points_Playoffs)
+
+
+
+## add and index column
+
+All_Time_Leaders_Points_Playoffs_2 <-All_Time_Leaders_Points_Playoffs %>% mutate(id = row_number())
+
+## Pass the first column to the number
+
+
+library(dplyr)
+All_Time_Leaders_Points_Playoffs_2 <- All_Time_Leaders_Points_Playoffs[, -(1)]
+rownames(All_Time_Leaders_Points_Playoffs_2) <- All_Time_Leaders_Points_Playoffs$PLAYER
+head(All_Time_Leaders_Points_Playoffs_2)
+
+```
+
+### Data and Analysis
+
+This document provides an analysis of Top 20 all-time Points leaders in Regular Season and Playoffs in the NBA.
+
+Data source used:
+
+- [NBA](https://stats.nba.com/) 
+.
+Data downloaded on October 21st 2018
+
+### Top 20 All-Time  Points Leaders in Regular Season
+
+
+
+```{r cars,echo=FALSE}
+## Heatmap
+
+
+library(d3heatmap)
+d3heatmap(All_Time_Leaders_Points_Regular_Season_2, scale = "column", colors = "GnBu", dendrogram = "none", 
+          
+          xaxis_font_size = "7pt", yaxis_font_size = "7pt", show_legend = show.legend,main = "NBA")
+
+```
+
+### Top 20 All-Time  Points Leaders in Playoffs
+
+
+```{r pressure, echo=FALSE}
+d3heatmap(All_Time_Leaders_Points_Playoffs_2, scale = "column", colors = "GnBu", dendrogram = "none", 
+          
+          xaxis_font_size = "7pt", yaxis_font_size = "7pt", show_legend = show.legend,main = "NBA")
+```
+
+
+
+### Code, questions and feedback
+
+The code for this article is publish in my [github account](https://github.com/JuanmaMN).  - [RPubs link] (http://rpubs.com/Juanma7/431499)
+
+R Packages used 
+
+- d3heatmap
+- dplyr
+- readr
+
+Please feel free to reach out for any question or feedback.
