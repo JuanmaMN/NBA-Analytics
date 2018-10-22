@@ -1,0 +1,122 @@
+---
+title: "Wins comparison over the last four seasons"
+author: "Juanma Martinez"
+date: "21st October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+## Setting Working Directory
+
+## Upload the data
+
+library(readr)
+library(dplyr)
+library(plotly)
+NBAstas_Tableau_right <- read_csv("NBAstas_Tableau-right.csv")
+View(NBAstas_Tableau_right)
+colnames(NBAstas_Tableau_right)
+
+NBA_stats_5_seasons_Eastern<-filter(NBAstas_Tableau_right, Season_1 %in% c("2013-2014", "2014-2015",
+                                                        "2016-2017", "2017-2018") 
+                       & Conference=="Eastern Conference")
+
+NBA_stats_5_seasons_Western<-filter(NBAstas_Tableau_right, Season_1 %in% c("2013-2014", "2014-2015",
+                                                                           "2016-2017", "2017-2018") 
+                                    & Conference=="Western Conference")
+
+```
+
+
+### Data and Analysis
+
+Number of games won season over the last four seasons in the NBA.
+
+* Data source used:
+
+    + [NBA](https://stats.nba.com/) 
+
+
+* Data downloaded on October 21st 2018
+
+* Plotly graphs used.
+
+    + Hover over one point in the scatter plot to see the stats for that specific team.
+
+    +  Click on one season on the legend to hide the stats for that specific season.
+
+
+
+### NBA Stats - Wins over season - Eastern Conference
+
+
+In the following plotly graph, we can see the number of games each team won over the last four seasons.
+
+**Teams in Eastern Conference**
+
+
+```{r cars, echo=FALSE}
+plot_ly(NBA_stats_5_seasons_Eastern, 
+        x = ~W, 
+        y = ~TEAM,
+        color=~Season_1,
+        text =  ~paste('</br> Team: ', TEAM,
+                       '</br> Season: ', Season_1,
+                       '</br> Total Wins: ', W,
+                       '</br> Avg. Points: ', PTS),
+        hoverinfo = "text",
+        type='scatter',
+        mode = 'markers') %>%
+  layout(xaxis = list(range = c(10, 80), yaxis= "", title = 'Wins'),
+          yaxis = list(title = " "))
+                      
+```
+
+
+### NBA Stats - Wins over season - Western Conference
+
+
+In the following plotly graph, we can see the number of games each team won over the last four seasons.
+
+**Teams in Western Conference**
+
+
+
+```{r pressure, echo=FALSE}
+plot_ly(NBA_stats_5_seasons_Western, 
+        x = ~W, 
+        y = ~TEAM,
+        color=~Season_1,
+        text =  ~paste('</br> Team: ', TEAM,
+                       
+                       '</br> Season: ', Season_1,
+                       
+                       '</br> Total Wins: ', W,
+                       
+                       '</br> Avg. Points: ', PTS),
+        
+        hoverinfo = "text",
+        
+        type='scatter',
+        
+        mode = 'markers') %>%
+  
+  layout(xaxis = list(range = c(10, 80), yaxis= "", title = 'Wins'),
+          yaxis = list(title = " "))
+```
+
+### Code, questions and feedback
+
+The code for this article is publish in my [github account](https://github.com/JuanmaMN).  
+
+For [RPubs link](http://rpubs.com/Juanma7/431945)
+
+R Packages used 
+
+- plotly
+- dplyr
+- readr
+
+Please feel free to reach out for any question or feedback.
