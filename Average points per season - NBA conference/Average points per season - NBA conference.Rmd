@@ -1,0 +1,84 @@
+---
+title: "Average points per season - NBA conference"
+author: "Juanma Martinez"
+date: "4th November 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+## Setting Working Directory
+
+## Upload the data
+library(readr)
+library(dplyr)
+library(plotly)
+library(ggplot2)
+
+NBAstas_Tableau_right <- read_csv("NBAstas_Tableau-right.csv")
+View(NBAstas_Tableau_right)
+colnames(NBAstas_Tableau_right)
+
+EWCAverage_ggplot2<-NBAstas_Tableau_right%>%   group_by(Conference, Season_1)%>%   summarize(average=mean(round(PTS),6))
+View(EWCAverage_ggplot2)
+
+```
+
+### Data and Analysis
+
+Average points per season by each  NBA conference over the last nine seasons.
+
+* Data source used:
+
+    + [NBA](https://stats.nba.com/) 
+
+
+* Data downloaded on October 21st 2018
+
+* R packages used
+
+    + [plotly](https://plot.ly/feed/) for the graph
+    
+    + [Dplyr](https://dplyr.tidyverse.org/)
+    
+    + readr to upload the data set
+    
+
+
+### NBA Conference - Average Points per season
+
+The following plotly graphs contains the average number of points each NBA conference made per season.
+
+We can compare which conference made the highest average number of points by hovering over on each coloured bar.
+
+I have used plotly graph. For full code, please see my Github account or contact me.
+
+
+**Western and Eastern Conference**
+
+
+```{r cars, echo= FALSE, warning = FALSE}
+
+p <- plot_ly(EWCAverage_ggplot2, x = ~average, y = ~Season_1, type = 'bar', orientation = 'h', color = ~Conference, 
+             text = ~paste('Conference: ', Conference, '</br> Season: ', Season_1,
+                           '</br> Average Points: ', average)
+             )%>%
+  layout(title ="NBA Conference -- Average Points per season",
+         barmode = 'stack',
+         yaxis = list(title = ""), 
+         xaxis = list(title = "Average Points"))
+
+p
+```
+
+
+### Code, questions and feedback
+
+The code for this article is publish in my [github account](https://github.com/JuanmaMN).  
+
+For [RPubs link](http://rpubs.com/Juanma7/436813)
+
+
+Please feel free to reach out for any question or feedback.
