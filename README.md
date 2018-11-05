@@ -27,3 +27,14 @@ We can see what teams
 I've used the plotly package for the visualization. 
 
 <img width="444" alt="wins over season" src="https://user-images.githubusercontent.com/37122520/47315479-9ae6d100-d63c-11e8-8e7a-571c7f438896.png">
+
+
+## **3. Average points per season - NBA conference**  - [Link](http://rpubs.com/Juanma7/436813)
+
+The following plotly graphs contains the average number of points each NBA conference made per season.
+
+We can compare which conference made the highest average number of points by hovering over on each coloured bar.
+
+I have used plotly graph for visualization.
+
+<img width="408" alt="nba conference - average points per season" src="https://user-images.githubusercontent.com/37122520/48021644-021e7e00-e131-11e8-83e5-350aecab50d6.png">
