@@ -1,0 +1,648 @@
+---
+title: "All-time best players by stats: Regular Season VS Playoffs"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+
+## Set working directory
+
+
+library(dplyr)
+library(plotly)
+library(tidyr)
+library(scales)
+library(readr)
+
+## Upload data set - All_Time_Leaders_Points_Regular_Season  REGULAR SEASON
+
+library(readr)
+All_Time_Leaders_Points_Regular_Season <- read_csv("All_Time_Leaders_Points_Regular_Season.csv", 
+                                                   col_types = cols(`3 Point Field Goals Attempted` = col_number(), 
+                                                                    `3 Point Field Goals Made` = col_number(), 
+                                                                    `3 Point Field Goals Percentage` = col_number(), 
+                                                                    Assists = col_number(), Blocks = col_number(), 
+                                                                    `Defensive Rebounds` = col_number(), 
+                                                                    `Effective Field Goal Percentage` = col_number(), 
+                                                                    `Field Goal Percentage` = col_number(), 
+                                                                    `Field Goals Attempted` = col_number(), 
+                                                                    `Field Goals Made` = col_number(), 
+                                                                    `Free Throw Percentage` = col_number(), 
+                                                                    `Free Throws Attempted` = col_number(), 
+                                                                    `Free Throws Made` = col_number(), 
+                                                                    `Games Played` = col_number(), `Minutes Played` = col_number(), 
+                                                                    `Offensive Rebounds` = col_number(), 
+                                                                    Points = col_number(), Rebounds = col_number(), 
+                                                                    Steals = col_number(), `True Shooting Percentage` = col_number(), 
+                                                                    Turnovers = col_number()))
+head(All_Time_Leaders_Points_Regular_Season)
+
+## add and index column
+
+All_Time_Leaders_Points_Regular_Season_2 <-All_Time_Leaders_Points_Regular_Season %>% mutate(id = row_number())
+
+## Pass the first column to the number
+
+
+library(dplyr)
+All_Time_Leaders_Points_Regular_Season_2 <- All_Time_Leaders_Points_Regular_Season[, -(1)]
+rownames(All_Time_Leaders_Points_Regular_Season_2) <- All_Time_Leaders_Points_Regular_Season$PLAYER
+head(All_Time_Leaders_Points_Regular_Season_2)
+
+## Upload second data set PLAYOFFS
+
+library(readr)
+All_Time_Leaders_Points_Playoffs <- read_csv("All_Time_Leaders_Points_Playoffs.csv", 
+                                             col_types = cols(`3 Point Field Goals Attempted` = col_number(), 
+                                                              `3 Point Field Goals Made` = col_number(), 
+                                                              `3 Point Field Goals Percentage` = col_number(), 
+                                                              Assists = col_number(), Blocks = col_number(), 
+                                                              `Defensive Rebounds` = col_number(), 
+                                                              `Effective Field Goal Percentage` = col_number(), 
+                                                              `Field Goal Percentage` = col_number(), 
+                                                              `Field Goals Attempted` = col_number(), 
+                                                              `Field Goals Made` = col_number(), 
+                                                              `Free Throw Percentage` = col_number(), 
+                                                              `Free Throws Attempted` = col_number(), 
+                                                              `Free Throws Made` = col_number(), 
+                                                              `Games Played` = col_number(), `Minutes Played` = col_number(), 
+                                                              `Offensive Rebounds` = col_number(), 
+                                                              Points = col_number(), Rebounds = col_number(), 
+                                                              Steals = col_number(), `True Shooting Percentage` = col_number(), 
+                                                              Turnovers = col_number()))
+View(All_Time_Leaders_Points_Playoffs)
+
+
+
+## add and index column
+
+All_Time_Leaders_Points_Playoffs_2 <-All_Time_Leaders_Points_Playoffs %>% mutate(id = row_number())
+
+## Pass the first column to the number
+
+
+library(dplyr)
+All_Time_Leaders_Points_Playoffs_2 <- All_Time_Leaders_Points_Playoffs[, -(1)]
+rownames(All_Time_Leaders_Points_Playoffs_2) <- All_Time_Leaders_Points_Playoffs$PLAYER
+head(All_Time_Leaders_Points_Playoffs_2)
+
+All_Time_Leaders_Assists_Regular_Season <- read_csv("All_Time_Leaders_Assists_Regular_Season.csv", 
+                                                   col_types = cols(`3 Point Field Goals Attempted` = col_number(), 
+                                                                    `3 Point Field Goals Made` = col_number(), 
+                                                                    `3 Point Field Goals Percentage` = col_number(), 
+                                                                    Assists = col_number(), Blocks = col_number(), 
+                                                                    `Defensive Rebounds` = col_number(), 
+                                                                    `Effective Field Goal Percentage` = col_number(), 
+                                                                    `Field Goal Percentage` = col_number(), 
+                                                                    `Field Goals Attempted` = col_number(), 
+                                                                    `Field Goals Made` = col_number(), 
+                                                                    `Free Throw Percentage` = col_number(), 
+                                                                    `Free Throws Attempted` = col_number(), 
+                                                                    `Free Throws Made` = col_number(), 
+                                                                    `Games Played` = col_number(), `Minutes Played` = col_number(), 
+                                                                    `Offensive Rebounds` = col_number(), 
+                                                                    Points = col_number(), Rebounds = col_number(), 
+                                                                    Steals = col_number(), `True Shooting Percentage` = col_number(), 
+                                                                    Turnovers = col_number()))
+head(All_Time_Leaders_Assists_Regular_Season)
+
+## add and index column
+
+All_Time_Leaders_Assists_Regular_Season_2 <-All_Time_Leaders_Assists_Regular_Season %>% mutate(id = row_number())
+
+## Pass the first column to the number
+
+
+library(dplyr)
+All_Time_Leaders_Assists_Regular_Season_2 <- All_Time_Leaders_Assists_Regular_Season[, -(1)]
+rownames(All_Time_Leaders_Assists_Regular_Season_2) <- All_Time_Leaders_Assists_Regular_Season$PLAYER
+head(All_Time_Leaders_Assists_Regular_Season_2)
+
+## Upload second data set PLAYOFFS
+
+library(readr)
+All_Time_Leaders_Assists_Playoffs <- read_csv("All_Time_Leaders_Assists_Playoffs.csv", 
+                                             col_types = cols(`3 Point Field Goals Attempted` = col_number(), 
+                                                              `3 Point Field Goals Made` = col_number(), 
+                                                              `3 Point Field Goals Percentage` = col_number(), 
+                                                              Assists = col_number(), Blocks = col_number(), 
+                                                              `Defensive Rebounds` = col_number(), 
+                                                              `Effective Field Goal Percentage` = col_number(), 
+                                                              `Field Goal Percentage` = col_number(), 
+                                                              `Field Goals Attempted` = col_number(), 
+                                                              `Field Goals Made` = col_number(), 
+                                                              `Free Throw Percentage` = col_number(), 
+                                                              `Free Throws Attempted` = col_number(), 
+                                                              `Free Throws Made` = col_number(), 
+                                                              `Games Played` = col_number(), `Minutes Played` = col_number(), 
+                                                              `Offensive Rebounds` = col_number(), 
+                                                              Points = col_number(), Rebounds = col_number(), 
+                                                              Steals = col_number(), `True Shooting Percentage` = col_number(), 
+                                                              Turnovers = col_number()))
+View(All_Time_Leaders_Assists_Playoffs)
+
+
+
+## add and index column
+
+All_Time_Leaders_Assists_Playoffs_2 <-All_Time_Leaders_Assists_Playoffs %>% mutate(id = row_number())
+
+## Pass the first column to the number
+
+
+library(dplyr)
+All_Time_Leaders_Assists_Playoffs_2 <- All_Time_Leaders_Assists_Playoffs[, -(1)]
+rownames(All_Time_Leaders_Assists_Playoffs_2) <- All_Time_Leaders_Assists_Playoffs$PLAYER
+head(All_Time_Leaders_Assists_Playoffs_2)
+
+All_Time_Leaders_Field_Goals_Made_Regular_Season <- read_csv("All_Time_Leaders_Field_Goals_Made_Regular_Season.csv", 
+                                                   col_types = cols(`3 Point Field Goals Attempted` = col_number(), 
+                                                                    `3 Point Field Goals Made` = col_number(), 
+                                                                    `3 Point Field Goals Percentage` = col_number(), 
+                                                                    Assists = col_number(), Blocks = col_number(), 
+                                                                    `Defensive Rebounds` = col_number(), 
+                                                                    `Effective Field Goal Percentage` = col_number(), 
+                                                                    `Field Goal Percentage` = col_number(), 
+                                                                    `Field Goals Attempted` = col_number(), 
+                                                                    `Field Goals Made` = col_number(), 
+                                                                    `Free Throw Percentage` = col_number(), 
+                                                                    `Free Throws Attempted` = col_number(), 
+                                                                    `Free Throws Made` = col_number(), 
+                                                                    `Games Played` = col_number(), `Minutes Played` = col_number(), 
+                                                                    `Offensive Rebounds` = col_number(), 
+                                                                    Points = col_number(), Rebounds = col_number(), 
+                                                                    Steals = col_number(), `True Shooting Percentage` = col_number(), 
+                                                                    Turnovers = col_number()))
+head(All_Time_Leaders_Field_Goals_Made_Regular_Season)
+
+## add and index column
+
+All_Time_Leaders_Field_Goals_Made_Regular_Season_2 <-All_Time_Leaders_Field_Goals_Made_Regular_Season %>% mutate(id = row_number())
+
+## Pass the first column to the number
+
+
+library(dplyr)
+All_Time_Leaders_Field_Goals_Made_Regular_Season_2 <- All_Time_Leaders_Field_Goals_Made_Regular_Season[, -(1)]
+rownames(All_Time_Leaders_Field_Goals_Made_Regular_Season_2) <- All_Time_Leaders_Field_Goals_Made_Regular_Season$PLAYER
+head(All_Time_Leaders_Field_Goals_Made_Regular_Season_2)
+
+## Upload second data set PLAYOFFS
+
+library(readr)
+All_Time_Leaders_Field_Goals_Made_Playoffs <- read_csv("All_Time_Leaders_Field_Goals_Made_Playoffs.csv", 
+                                             col_types = cols(`3 Point Field Goals Attempted` = col_number(), 
+                                                              `3 Point Field Goals Made` = col_number(), 
+                                                              `3 Point Field Goals Percentage` = col_number(), 
+                                                              Assists = col_number(), Blocks = col_number(), 
+                                                              `Defensive Rebounds` = col_number(), 
+                                                              `Effective Field Goal Percentage` = col_number(), 
+                                                              `Field Goal Percentage` = col_number(), 
+                                                              `Field Goals Attempted` = col_number(), 
+                                                              `Field Goals Made` = col_number(), 
+                                                              `Free Throw Percentage` = col_number(), 
+                                                              `Free Throws Attempted` = col_number(), 
+                                                              `Free Throws Made` = col_number(), 
+                                                              `Games Played` = col_number(), `Minutes Played` = col_number(), 
+                                                              `Offensive Rebounds` = col_number(), 
+                                                              Points = col_number(), Rebounds = col_number(), 
+                                                              Steals = col_number(), `True Shooting Percentage` = col_number(), 
+                                                              Turnovers = col_number()))
+View(All_Time_Leaders_Field_Goals_Made_Playoffs)
+
+
+
+## add and index column
+
+All_Time_Leaders_Field_Goals_Made_Playoffs_2 <-All_Time_Leaders_Field_Goals_Made_Playoffs %>% mutate(id = row_number())
+
+## Pass the first column to the number
+
+
+library(dplyr)
+All_Time_Leaders_Field_Goals_Made_Playoffs_2 <- All_Time_Leaders_Field_Goals_Made_Playoffs[, -(1)]
+rownames(All_Time_Leaders_Field_Goals_Made_Playoffs_2) <- All_Time_Leaders_Field_Goals_Made_Playoffs$PLAYER
+head(All_Time_Leaders_Field_Goals_Made_Playoffs_2)
+
+All_Time_Leaders_Rebounds_Regular_Season <- read_csv("All_Time_Leaders_Rebounds_Regular_Season.csv", 
+                                                   col_types = cols(`3 Point Field Goals Attempted` = col_number(), 
+                                                                    `3 Point Field Goals Made` = col_number(), 
+                                                                    `3 Point Field Goals Percentage` = col_number(), 
+                                                                    Assists = col_number(), Blocks = col_number(), 
+                                                                    `Defensive Rebounds` = col_number(), 
+                                                                    `Effective Field Goal Percentage` = col_number(), 
+                                                                    `Field Goal Percentage` = col_number(), 
+                                                                    `Field Goals Attempted` = col_number(), 
+                                                                    `Field Goals Made` = col_number(), 
+                                                                    `Free Throw Percentage` = col_number(), 
+                                                                    `Free Throws Attempted` = col_number(), 
+                                                                    `Free Throws Made` = col_number(), 
+                                                                    `Games Played` = col_number(), `Minutes Played` = col_number(), 
+                                                                    `Offensive Rebounds` = col_number(), 
+                                                                    Points = col_number(), Rebounds = col_number(), 
+                                                                    Steals = col_number(), `True Shooting Percentage` = col_number(), 
+                                                                    Turnovers = col_number()))
+head(All_Time_Leaders_Rebounds_Regular_Season)
+
+## add and index column
+
+All_Time_Leaders_Rebounds_Regular_Season_2 <-All_Time_Leaders_Rebounds_Regular_Season %>% mutate(id = row_number())
+
+## Pass the first column to the number
+
+
+library(dplyr)
+All_Time_Leaders_Rebounds_Regular_Season_2 <- All_Time_Leaders_Rebounds_Regular_Season[, -(1)]
+rownames(All_Time_Leaders_Rebounds_Regular_Season_2) <- All_Time_Leaders_Rebounds_Regular_Season$PLAYER
+head(All_Time_Leaders_Rebounds_Regular_Season_2)
+
+## Upload second data set PLAYOFFS
+
+library(readr)
+All_Time_Leaders_Rebounds_Playoffs <- read_csv("All_Time_Leaders_Rebounds_Playoffs.csv", 
+                                             col_types = cols(`3 Point Field Goals Attempted` = col_number(), 
+                                                              `3 Point Field Goals Made` = col_number(), 
+                                                              `3 Point Field Goals Percentage` = col_number(), 
+                                                              Assists = col_number(), Blocks = col_number(), 
+                                                              `Defensive Rebounds` = col_number(), 
+                                                              `Effective Field Goal Percentage` = col_number(), 
+                                                              `Field Goal Percentage` = col_number(), 
+                                                              `Field Goals Attempted` = col_number(), 
+                                                              `Field Goals Made` = col_number(), 
+                                                              `Free Throw Percentage` = col_number(), 
+                                                              `Free Throws Attempted` = col_number(), 
+                                                              `Free Throws Made` = col_number(), 
+                                                              `Games Played` = col_number(), `Minutes Played` = col_number(), 
+                                                              `Offensive Rebounds` = col_number(), 
+                                                              Points = col_number(), Rebounds = col_number(), 
+                                                              Steals = col_number(), `True Shooting Percentage` = col_number(), 
+                                                              Turnovers = col_number()))
+View(All_Time_Leaders_Rebounds_Playoffs)
+
+
+
+## add and index column
+
+All_Time_Leaders_Rebounds_Playoffs_2 <-All_Time_Leaders_Rebounds_Playoffs %>% mutate(id = row_number())
+
+## Pass the first column to the number
+
+
+library(dplyr)
+All_Time_Leaders_Rebounds_Playoffs_2 <- All_Time_Leaders_Rebounds_Playoffs[, -(1)]
+rownames(All_Time_Leaders_Rebounds_Playoffs_2) <- All_Time_Leaders_Rebounds_Playoffs$PLAYER
+head(All_Time_Leaders_Rebounds_Playoffs_2)
+
+All_Time_Leaders_Steals_Regular_Season <- read_csv("All_Time_Leaders_Steals_Regular_Season.csv", 
+                                                   col_types = cols(`3 Point Field Goals Attempted` = col_number(), 
+                                                                    `3 Point Field Goals Made` = col_number(), 
+                                                                    `3 Point Field Goals Percentage` = col_number(), 
+                                                                    Assists = col_number(), Blocks = col_number(), 
+                                                                    `Defensive Rebounds` = col_number(), 
+                                                                    `Effective Field Goal Percentage` = col_number(), 
+                                                                    `Field Goal Percentage` = col_number(), 
+                                                                    `Field Goals Attempted` = col_number(), 
+                                                                    `Field Goals Made` = col_number(), 
+                                                                    `Free Throw Percentage` = col_number(), 
+                                                                    `Free Throws Attempted` = col_number(), 
+                                                                    `Free Throws Made` = col_number(), 
+                                                                    `Games Played` = col_number(), `Minutes Played` = col_number(), 
+                                                                    `Offensive Rebounds` = col_number(), 
+                                                                    Points = col_number(), Rebounds = col_number(), 
+                                                                    Steals = col_number(), `True Shooting Percentage` = col_number(), 
+                                                                    Turnovers = col_number()))
+head(All_Time_Leaders_Steals_Regular_Season)
+
+## add and index column
+
+All_Time_Leaders_Steals_Regular_Season_2 <-All_Time_Leaders_Steals_Regular_Season %>% mutate(id = row_number())
+
+## Pass the first column to the number
+
+
+library(dplyr)
+All_Time_Leaders_Steals_Regular_Season_2 <- All_Time_Leaders_Steals_Regular_Season[, -(1)]
+rownames(All_Time_Leaders_Steals_Regular_Season_2) <- All_Time_Leaders_Steals_Regular_Season$PLAYER
+head(All_Time_Leaders_Steals_Regular_Season_2)
+
+## Upload second data set PLAYOFFS
+
+library(readr)
+All_Time_Leaders_Steals_Playoffs <- read_csv("All_Time_Leaders_Steals_Playoffs.csv", 
+                                             col_types = cols(`3 Point Field Goals Attempted` = col_number(), 
+                                                              `3 Point Field Goals Made` = col_number(), 
+                                                              `3 Point Field Goals Percentage` = col_number(), 
+                                                              Assists = col_number(), Blocks = col_number(), 
+                                                              `Defensive Rebounds` = col_number(), 
+                                                              `Effective Field Goal Percentage` = col_number(), 
+                                                              `Field Goal Percentage` = col_number(), 
+                                                              `Field Goals Attempted` = col_number(), 
+                                                              `Field Goals Made` = col_number(), 
+                                                              `Free Throw Percentage` = col_number(), 
+                                                              `Free Throws Attempted` = col_number(), 
+                                                              `Free Throws Made` = col_number(), 
+                                                              `Games Played` = col_number(), `Minutes Played` = col_number(), 
+                                                              `Offensive Rebounds` = col_number(), 
+                                                              Points = col_number(), Rebounds = col_number(), 
+                                                              Steals = col_number(), `True Shooting Percentage` = col_number(), 
+                                                              Turnovers = col_number()))
+View(All_Time_Leaders_Steals_Playoffs)
+
+
+
+## add and index column
+
+All_Time_Leaders_Steals_Playoffs_2 <-All_Time_Leaders_Steals_Playoffs %>% mutate(id = row_number())
+
+## Pass the first column to the number
+
+
+library(dplyr)
+All_Time_Leaders_Steals_Playoffs_2 <- All_Time_Leaders_Steals_Playoffs[, -(1)]
+rownames(All_Time_Leaders_Steals_Playoffs_2) <- All_Time_Leaders_Steals_Playoffs$PLAYER
+head(All_Time_Leaders_Steals_Playoffs_2)
+```
+
+All-time top scorers {data-orientation=rows}
+=====================================  
+
+Column {data-width=200, data-height=300}
+-------------------------------------
+
+###
+
+**Top 20 All-Time  Points Leaders in Regular Season and Playoffs**
+
+NBA Stats Analysis of the Top 20 All-time Points Leaders. Stats for Regular Season and Playoffs where we can see how much each player contributes to the different games in which they played.
+
+This analysis contains data until October 21st 2018.
+
+I've used the d3heatmap which easily represents all the players stats. We can hover over on it to see the name of the player, the stats and value.
+
+###
+
+**Code, questions and feedback**
+
+* Data source used: [NBA](https://stats.nba.com/) 
+
+* Data downloaded on October 21st 2018
+
+* R packages used: [d3heatmap](https://cran.r-project.org/web/packages/d3heatmap/index.html) for the graph,  [Dplyr](https://dplyr.tidyverse.org/) and [readr](https://cran.r-project.org/web/packages/readr/README.html) to upload the data set
+
+Column {data-width=800, data-height=700}
+-------------------------------------
+
+### Top 20 All-Time  Points Leaders in Regular Season
+
+```{r echo=FALSE}
+
+## Heatmap
+
+
+library(d3heatmap)
+d3heatmap(All_Time_Leaders_Points_Regular_Season_2, scale = "column", colors = "GnBu", dendrogram = "none", 
+          
+          xaxis_font_size = "7pt", yaxis_font_size = "7pt", show_legend = show.legend,main = "NBA")
+```
+
+
+
+### Top 20 All-Time  Points Leaders in Playoffs
+
+
+```{r echo=FALSE}
+
+d3heatmap(All_Time_Leaders_Points_Playoffs_2, scale = "column", colors = "GnBu", dendrogram = "none", 
+          
+          xaxis_font_size = "7pt", yaxis_font_size = "7pt", show_legend = show.legend,main = "NBA")
+```
+
+All-time Assists Leaders {data-orientation=rows}
+=====================================  
+
+Column {data-width=200, data-height=300}
+-------------------------------------
+
+###
+
+**Top 20 All-Time Assists Leaders in Regular Season**
+
+NBA Stats Analysis of the Top 20 All-time Assists Leaders. Stats for Regular Season and Playoffs where we can see how much each player contributes to the different games in which they played.
+
+This analysis contains data until October 21st 2018.
+
+I've used the d3heatmap which easily represents all the players stats. We can hover over on it to see the name of the player, the stats and value.
+
+
+###
+
+**Top 20 All-Time Assists Leaders in Playoffs**
+
+* Data source used: [NBA](https://stats.nba.com/) 
+
+* Data downloaded on October 21st 2018
+
+* R packages used: [d3heatmap](https://cran.r-project.org/web/packages/d3heatmap/index.html) for the graph,  [Dplyr](https://dplyr.tidyverse.org/) and [readr](https://cran.r-project.org/web/packages/readr/README.html) to upload the data set
+
+Column {data-width=800, data-height=700}
+-------------------------------------
+
+### Top 20 All-Time  Assists Leaders in Regular Season
+
+```{r echo=FALSE}
+
+## Heatmap
+
+
+library(d3heatmap)
+d3heatmap(All_Time_Leaders_Assists_Regular_Season_2, scale = "column", colors = "GnBu", dendrogram = "none", 
+          
+          xaxis_font_size = "7pt", yaxis_font_size = "7pt", show_legend = show.legend,main = "NBA")
+```
+
+
+
+### Top 20 All-Time  Assists Leaders in Playoffs
+
+
+```{r echo=FALSE}
+
+d3heatmap(All_Time_Leaders_Assists_Playoffs_2, scale = "column", colors = "GnBu", dendrogram = "none", 
+          
+          xaxis_font_size = "7pt", yaxis_font_size = "7pt", show_legend = show.legend,main = "NBA")
+```
+
+
+
+All-time FGM Leaders {data-orientation=rows}
+=====================================  
+
+Column {data-width=200, data-height=300}
+-------------------------------------
+
+###
+
+**Top 20 All-Time  Field Goals Made Leaders in Regular Season**
+
+NBA Stats Analysis of the Top 20 All-time FGM Leaders. Stats for Regular Season and Playoffs where we can see how much each player contributes to the different games in which they played.
+
+This analysis contains data until October 21st 2018.
+
+I've used the d3heatmap which easily represents all the players stats. We can hover over on it to see the name of the player, the stats and value.
+
+
+###
+
+**Top 20 All-Time  Field Goals Made Leaders in Playoffs**
+
+* Data source used: [NBA](https://stats.nba.com/) 
+
+* Data downloaded on October 21st 2018
+
+* R packages used: [d3heatmap](https://cran.r-project.org/web/packages/d3heatmap/index.html) for the graph,  [Dplyr](https://dplyr.tidyverse.org/) and [readr](https://cran.r-project.org/web/packages/readr/README.html) to upload the data set.
+
+Column {data-width=800, data-height=700}
+-------------------------------------
+
+### Top 20 All-Time  Field Goals Made Leaders in Regular Season
+
+```{r echo=FALSE}
+
+## Heatmap
+
+
+library(d3heatmap)
+d3heatmap(All_Time_Leaders_Field_Goals_Made_Regular_Season_2, scale = "column", colors = "GnBu", dendrogram = "none", 
+          
+          xaxis_font_size = "7pt", yaxis_font_size = "7pt", show_legend = show.legend,main = "NBA")
+```
+
+
+
+### Top 20 All-Time  Field Goals Made Leaders in Playoffs
+
+
+```{r echo=FALSE}
+
+d3heatmap(All_Time_Leaders_Field_Goals_Made_Playoffs_2, scale = "column", colors = "GnBu", dendrogram = "none", 
+          
+          xaxis_font_size = "7pt", yaxis_font_size = "7pt", show_legend = show.legend,main = "NBA")
+```
+
+
+All-time Rebounds Leaders {data-orientation=rows}
+=====================================  
+
+Column {data-width=200, data-height=300}
+-------------------------------------
+
+###
+
+**Top 20 All-Time  Rebounds Leaders in Regular Season**
+
+NBA Stats Analysis of the Top 20 All-time Rebounds Leaders. Stats for Regular Season and Playoffs where we can see how much each player contributes to the different games in which they played.
+
+This analysis contains data until October 21st 2018.
+
+I've used the d3heatmap which easily represents all the players stats. We can hover over on it to see the name of the player, the stats and value.
+
+
+###
+
+**Top 20 All-Time  Rebounds Leaders in Playoffs**
+
+* Data source used: [NBA](https://stats.nba.com/) 
+
+* Data downloaded on October 21st 2018
+
+* R packages used: [d3heatmap](https://cran.r-project.org/web/packages/d3heatmap/index.html) for the graph,  [Dplyr](https://dplyr.tidyverse.org/) and [readr](https://cran.r-project.org/web/packages/readr/README.html) to upload the data set.
+
+Column {data-width=800, data-height=700}
+-------------------------------------
+
+### Top 20 All-Time  Rebounds Leaders in Regular Season
+
+```{r echo=FALSE}
+
+## Heatmap
+
+
+library(d3heatmap)
+d3heatmap(All_Time_Leaders_Rebounds_Regular_Season_2, scale = "column", colors = "GnBu", dendrogram = "none", 
+          
+          xaxis_font_size = "7pt", yaxis_font_size = "7pt", show_legend = show.legend,main = "NBA")
+```
+
+
+
+### Top 20 All-Time  Rebounds Leaders in Playoffs
+
+
+```{r echo=FALSE}
+
+d3heatmap(All_Time_Leaders_Rebounds_Playoffs_2, scale = "column", colors = "GnBu", dendrogram = "none", 
+          
+          xaxis_font_size = "7pt", yaxis_font_size = "7pt", show_legend = show.legend,main = "NBA")
+```
+
+All-time Steals Leaders {data-orientation=rows}
+=====================================  
+
+Column {data-width=200, data-height=300}
+-------------------------------------
+
+###
+
+**Top 20 All-Time  Steals Leaders in Regular Season**
+
+NBA Stats Analysis of the Top 20 All-time Steals Leaders. Stats for Regular Season and Playoffs where we can see how much each player contributes to the different games in which they played.
+
+This analysis contains data until October 21st 2018.
+
+I've used the d3heatmap which easily represents all the players stats. We can hover over on it to see the name of the player, the stats and value.
+
+
+###
+
+**Top 20 All-Time  Steals Leaders in Playoffs**
+
+* Data source used: [NBA](https://stats.nba.com/) 
+
+* Data downloaded on October 21st 2018
+
+* R packages used: [d3heatmap](https://cran.r-project.org/web/packages/d3heatmap/index.html) for the graph,  [Dplyr](https://dplyr.tidyverse.org/) and [readr](https://cran.r-project.org/web/packages/readr/README.html) to upload the data set.
+
+Column {data-width=800, data-height=700}
+-------------------------------------
+
+### Top 20 All-Time  Steals Leaders in Regular Season
+
+```{r echo=FALSE}
+
+## Heatmap
+
+
+library(d3heatmap)
+d3heatmap(All_Time_Leaders_Steals_Regular_Season_2, scale = "column", colors = "GnBu", dendrogram = "none", 
+          
+          xaxis_font_size = "7pt", yaxis_font_size = "7pt", show_legend = show.legend,main = "NBA")
+```
+
+
+
+### Top 20 All-Time  Steals Leaders in Playoffs
+
+
+```{r echo=FALSE}
+
+d3heatmap(All_Time_Leaders_Steals_Playoffs_2, scale = "column", colors = "GnBu", dendrogram = "none", 
+          
+          xaxis_font_size = "7pt", yaxis_font_size = "7pt", show_legend = show.legend,main = "NBA")
+```
+
+
+
