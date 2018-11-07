@@ -1,0 +1,104 @@
+---
+title: "NBA Conference - Average Points per season"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+
+## Setting Working Directory
+
+## Upload the data
+library(readr)
+library(dplyr)
+library(plotly)
+library(ggplot2)
+
+NBAstas_Tableau_right <- read_csv("NBAstas_Tableau-right.csv")
+View(NBAstas_Tableau_right)
+colnames(NBAstas_Tableau_right)
+
+EWCAverage_ggplot2<-NBAstas_Tableau_right%>%   group_by(Conference, Season_1)%>%   summarize(average=mean(round(PTS),6))
+View(EWCAverage_ggplot2)
+
+```
+
+NBA Conference -- Average Points per season --  Data and plotly graphs {data-orientation=rows}
+=====================================  
+
+Column {data-width=200, data-height=300}
+-------------------------------------
+
+###
+
+**Data and Analysis**
+
+Average points per season by each  NBA conference over the last nine seasons.
+
+* R packages used
+
+    + [plotly](https://plot.ly/feed/) for the graph
+    
+    + [Dplyr](https://dplyr.tidyverse.org/)
+    
+    + readr to upload the data set
+
+###
+
+**Code, questions and feedback**
+
+* Data source used: [NBA](https://stats.nba.com/) 
+
+* Data downloaded on October 21st 2018
+ 
+The code for this article is publish in my [github account](https://github.com/JuanmaMN).  
+
+For [RPubs link](http://rpubs.com/Juanma7/437528). Resolution is not great.
+
+
+Please feel free to reach out for any question or feedback.
+
+Column {data-width=800, data-height=700}
+-------------------------------------
+
+### NBA Conference -- Average Points per season
+
+```{r echo=FALSE}
+
+
+p <- plot_ly(EWCAverage_ggplot2, x = ~average, y = ~Season_1, type = 'bar', orientation = 'h', color = ~Conference, 
+             text = ~paste('Conference: ', Conference, '</br> Season: ', Season_1,
+                           '</br> Average Points: ', average)
+             )%>%
+  layout(title =" ",
+         barmode = 'stack',
+         yaxis = list(title = ""), 
+         xaxis = list(title = "Average Points"))
+
+p
+```
+
+
+
+### NBA Conference -- Average Points per season
+
+
+```{r echo=FALSE}
+
+p <- plot_ly(EWCAverage_ggplot2, x = ~Season_1, y = ~average, color = ~Conference, 
+             text = ~paste('Conference: ', Conference, '</br> Season: ', Season_1,
+                           '</br> Average Points: ', average)
+             )%>%
+  add_lines()%>%
+  layout(title =" ",
+         barmode = 'stack',
+         yaxis = list(range = c(80, 110), title = "Average Points"), 
+         xaxis = list(title = ""))
+
+p
+
+
+```
