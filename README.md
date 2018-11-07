@@ -51,3 +51,22 @@ I have used plotly graph for visualization. Both graphs use the same data sets.
 
 <img width="953" alt="nba conference - average points per season - flexdashboard" src="https://user-images.githubusercontent.com/37122520/48157189-e9e06780-e2c6-11e8-9fd3-671e9ac8f9b4.png">
 
+
+## **5. All-time best players by stats: Regular Season VS Playoffs - Flexdashboard** - [Link](http://rpubs.com/Juanma7/437571)
+
+NBA Stats Analysis of the Top 20 All-time Leaders   
+
+- Points
+- Assists
+- FGM
+- Rebounds
+- Steals
+
+Stats for Regular Season and Playoffs where we can see how much each player contributes to the different games in which they played.
+
+This analysis contains data until October 21st 2018.
+
+I've used the d3heatmap which easily represents all the players stats. We can hover over on it to see the name of the player, the stats and value.
+
+
+<img width="947" alt="all-time best players by stats -- regular season vs playoffs" src="https://user-images.githubusercontent.com/37122520/48161578-ccb19600-e2d2-11e8-8acd-958fe531b9b3.png">
