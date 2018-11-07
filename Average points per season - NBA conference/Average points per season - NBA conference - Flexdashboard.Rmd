@@ -44,7 +44,7 @@ Average points per season by each  NBA conference over the last nine seasons.
     
     + [Dplyr](https://dplyr.tidyverse.org/)
     
-    + readr to upload the data set
+    + [readr](https://cran.r-project.org/web/packages/readr/README.html) to upload the data set
 
 ###
 
