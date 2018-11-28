@@ -1,0 +1,111 @@
+---
+title: "NBA Team Analysis - Wins VS Points"
+author: "Juanma Martinez"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(readr)
+library(dplyr)
+library(plotly)
+library(ggplot2)
+
+NBAstas_Tableau_right <- read_csv("NBAstas_Tableau-right.csv")
+View(NBAstas_Tableau_right)
+colnames(NBAstas_Tableau_right)
+```
+
+NBA Team Analysis - Wins VS Points {data-orientation=rows}
+=====================================  
+
+Column {data-width=820, data-height=750}
+-------------------------------------
+  
+### NBA Team Analysis - Wins VS Points
+
+**Graph** 
+
+Two variables have been used for the scatter plot.
+          1. Average Points per game (X Axis).
+          2. Total games won during the regular season (Y Axis). 
+
+The graph contains data for all teams from both conferences from 2009-2010 to 2017-2018  regular seasons.
+
+Most successful teams have been Golden State Warriors and Houston Rockets with the highest number of victories and average points per season.
+
+
+
+
+**Ggplot Code**
+
+
+```
+p<- ggplot(data,aes(x=PTS, y=W, group=Conference, colour= Conference,
+                            text =paste('Team: ', TEAM,'</br>Season:', Season_1,
+                                    '</br>Points: ', PTS, 
+                                    '</br>Wins: ', W))) 
+        + geom_point()
+        + scale_colour_brewer(palette="Set1") 
+        + ggtitle('NBA Team Analysis - Wins VS Points') + xlab('Points') + ylab('Wins') 
+        + theme(legend.title=element_blank())
+        + geom_smooth(method = loess, method.args = list(family = "symmetric"), se=FALSE)
+
+graph<- ggplotly(p, tooltip=c("text", "colour"))
+
+```
+
+
+
+
+
+
+### NBA Team Analysis - Wins VS Points
+
+
+```{r echo=FALSE}
+
+sps <- ggplot(NBAstas_Tableau_right,aes(x=PTS, y=W, group=Conference, colour= Conference,text =paste('Team: ', TEAM,'</br>Season:', Season_1,'</br>Points: ', PTS, '</br>Wins: ', W))) + geom_point()+ scale_colour_brewer(palette="Set1") + ggtitle('NBA Team Analysis - Wins VS Points') +xlab('Points') +  ylab('Wins') + theme(legend.title=element_blank())
+
+sps2<-sps + geom_smooth(method = loess, method.args = list(family = "symmetric"), se=FALSE)
+
+p <- ggplotly(sps2, tooltip=c("text", "colour"))
+
+p
+
+
+
+```
+
+  
+Column {data-width=180, data-height=250}
+-------------------------------------
+  
+###
+  
+**R Packages used**
+  
+
+- flexdashboard
+- readr
+- ggplot2
+- Ggplot2 extension to plotly
+
+![optional caption text](logo.png)    
+
+
+###
+
+**Code, questions and feedback**
+
+The code for this article is publish in my [github account](https://github.com/JuanmaMN).  
+
+
+For [RPubs link](http://rpubs.com/Juanma7/443817). Resolution is not great.
+
+Please feel free to reach out for any question or feedback.
+
+
+
