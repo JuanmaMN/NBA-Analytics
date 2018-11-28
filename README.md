@@ -49,7 +49,9 @@ We can compare which conference made the highest average number of points by hov
 
 I have used plotly graph for visualization. Both graphs use the same data sets.
 
-<img width="953" alt="nba conference - average points per season - flexdashboard" src="https://user-images.githubusercontent.com/37122520/48157189-e9e06780-e2c6-11e8-9fd3-671e9ac8f9b4.png">
+
+<img width="954" alt="nba conference - average points per season - flexdashboard" src="https://user-images.githubusercontent.com/37122520/48162285-94ab5280-e2d4-11e8-8abf-299d8e9d4dd2.png">
+
 
 
 ## **5. All-time best players by stats: Regular Season VS Playoffs - Flexdashboard** - [Link](http://rpubs.com/Juanma7/437571)
