@@ -1,0 +1,279 @@
+---
+title: "NBA - Last three seasons analysis"
+author: "Juanma Martinez"
+date: "10/05/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(readr)
+NBAstas_Tableau_right <- read_csv("NBAstas_Tableau-right.csv")
+View(NBAstas_Tableau_right)
+
+colnames(NBAstas_Tableau_right)
+
+library(dplyr)
+
+
+# Eastern Conference ------------------------------------------------------
+
+
+NBA_data_1<-NBAstas_Tableau_right %>% filter(Season_1 == "2018-2019" & Conference == "Eastern Conference") %>%
+  select(1,4,5,6)
+View(NBA_data_1)
+
+names(NBA_data_1)[1]<-"Team"
+names(NBA_data_1)[2]<-"Wins_1"
+names(NBA_data_1)[3]<-"Losses_1"
+names(NBA_data_1)[4]<-"Win_%_1"
+
+NBA_data_2<-NBAstas_Tableau_right %>% filter(Season_1 == "2017-2018" & Conference == "Eastern Conference") %>%
+  select(1,4,5,6)
+
+
+names(NBA_data_2)[1]<-"Team"
+names(NBA_data_2)[2]<-"Wins_2"
+names(NBA_data_2)[3]<-"Losses_2"
+names(NBA_data_2)[4]<-"Win_%_2"
+
+View(NBA_data_2)
+
+
+
+d <-inner_join(NBA_data_1,NBA_data_2, by = ("Team"))
+
+View(d)
+
+
+
+NBA_data_3<-NBAstas_Tableau_right %>% filter(Season_1 =="2016-2017" & Conference == "Eastern Conference") %>%
+  select(1,4,5,6)
+
+names(NBA_data_3)[1]<-"Team"
+names(NBA_data_3)[2]<-"Wins_3"
+names(NBA_data_3)[3]<-"Losses_3"
+names(NBA_data_3)[4]<-"Win_%_3"
+
+View(NBA_data_3)
+
+d_2 <-inner_join(d,NBA_data_3, by = ("Team"))
+View(d_2)
+
+
+
+
+
+# Western Conference ------------------------------------------------------
+
+
+
+NBA_data_A<-NBAstas_Tableau_right %>% filter(Season_1 == "2018-2019" & Conference == "Western Conference") %>%
+  select(1,4,5,6)
+View(NBA_data_A)
+
+names(NBA_data_A)[1]<-"Team"
+names(NBA_data_A)[2]<-"Wins_1"
+names(NBA_data_A)[3]<-"Losses_1"
+names(NBA_data_A)[4]<-"Win_%_1"
+
+NBA_data_B<-NBAstas_Tableau_right %>% filter(Season_1 == "2017-2018" & Conference == "Western Conference") %>%
+  select(1,4,5,6)
+
+
+names(NBA_data_B)[1]<-"Team"
+names(NBA_data_B)[2]<-"Wins_2"
+names(NBA_data_B)[3]<-"Losses_2"
+names(NBA_data_B)[4]<-"Win_%_2"
+
+View(NBA_data_B)
+
+
+
+d_A_B <-inner_join(NBA_data_A,NBA_data_B, by = ("Team"))
+
+View(d_A_B)
+
+
+NBA_data_C<-NBAstas_Tableau_right %>% filter(Season_1 =="2016-2017" & Conference == "Western Conference") %>%
+  select(1,4,5,6)
+
+names(NBA_data_C)[1]<-"Team"
+names(NBA_data_C)[2]<-"Wins_3"
+names(NBA_data_C)[3]<-"Losses_3"
+names(NBA_data_C)[4]<-"Win_%_3"
+
+View(NBA_data_C)
+
+d_A_B_C <-inner_join(d_A_B,NBA_data_C, by = ("Team"))
+View(d_2)
+
+
+
+library(gt)
+
+
+
+```
+
+## NBA Regular season analysis - Eastern conference
+
+
+NBA Eastern conference stats for the last three seasons. Regular seasons stats (Wins, Losses , Percentage of Wins).
+
+
+
+
+```{r cars, echo=FALSE}
+NBA_gt_eastern<- d_2 %>% gt(
+  rowname_col = "Team",
+)%>%
+  tab_header(
+    title = md("**NBA** Stats"),
+    subtitle = md("Regular Season - Eastern Conference")
+  ) %>% 
+  fmt_percent(
+    columns = vars(`Win_%_1`,`Win_%_2`,`Win_%_3`),
+    decimals = 1
+  ) %>%
+  tab_footnote(
+    footnote = "Regular Season Analysis",
+    locations = cells_title(groups = "subtitle")
+  ) %>%
+  tab_source_note(
+    source_note = md(
+      "Source: NBA official page [stats.nba.com](https://stats.nba.com).")
+  )  %>%
+  tab_stubhead_label(label = md("**TEAM**")) %>%
+  tab_options(
+    table.width = pct(100),
+    #table.background.color = "lightgray",
+    row.padding = px(5),
+    heading.title.font.size = "small",
+    heading.subtitle.font.size = "small",
+    heading.background.color = "red",
+    column_labels.background.color = "lightgray"
+  ) %>%
+  tab_spanner(
+    label = md("2018-2019"),
+    columns = vars(`Wins_1`,`Losses_1`,`Win_%_1`)
+  ) %>%
+  tab_spanner(
+    label = md("2017-2018"),
+    columns = vars(`Wins_2`,`Losses_2`,`Win_%_2`)
+  ) %>%
+  tab_spanner(
+    label = md("2016-2017"),
+    columns = vars(`Wins_3`,`Losses_3`,`Win_%_3`)
+  ) %>%
+  data_color(
+    columns = vars(`Win_%_1`,`Win_%_2`,`Win_%_3`),
+    colors = scales::col_numeric(
+      palette = c(
+        "lightgray", "lightgreen", "lightblue"),
+      domain = c(0.2, 0.5,0.74))
+  ) %>%
+  cols_label(
+    Wins_1 = md("Wins"),
+    Losses_1 = md("Losses"),
+    `Win_%_1`= md("Wins %"),
+    Wins_2 = md("Wins"),
+    Losses_2 = md("Losses"),
+    `Win_%_2`= md("Wins %"),
+    Wins_3 = md("Wins"),
+    Losses_3 = md("Losses"),
+    `Win_%_3`= md("Wins %")
+  )
+
+NBA_gt_eastern
+
+```
+
+## NBA Regular season analysis - Western conference
+
+
+NBA Western conference stats for the last three seasons. Regular seasons stats (Wins, Losses , Percentage of Wins).
+
+
+```{r pressure, echo=FALSE}
+NBA_gt_Western<- d_A_B_C  %>% gt(
+  rowname_col = "Team",
+)%>%
+  tab_header(
+    title = md("**NBA** Stats"),
+    subtitle = md("Regular Season - Western Conference")
+  ) %>% 
+  fmt_percent(
+    columns = vars(`Win_%_1`,`Win_%_2`,`Win_%_3`),
+    decimals = 1
+  ) %>%
+  tab_footnote(
+    footnote = "Regular Season Analysis",
+    locations = cells_title(groups = "subtitle")
+  ) %>%
+  tab_source_note(
+    source_note = md(
+      "Source: NBA official page [stats.nba.com](https://stats.nba.com).")
+  )  %>%
+  tab_stubhead_label(label = md("**TEAM**")) %>%
+  tab_options(
+    table.width = pct(100),
+    #table.background.color = "lightgray",
+    row.padding = px(5),
+    heading.title.font.size = "small",
+    heading.subtitle.font.size = "small",
+    heading.background.color = "red",
+    column_labels.background.color = "lightgray"
+  ) %>%
+  tab_spanner(
+    label = md("2018-2019"),
+    columns = vars(`Wins_1`,`Losses_1`,`Win_%_1`)
+  ) %>%
+  tab_spanner(
+    label = md("2017-2018"),
+    columns = vars(`Wins_2`,`Losses_2`,`Win_%_2`)
+  ) %>%
+  tab_spanner(
+    label = md("2016-2017"),
+    columns = vars(`Wins_3`,`Losses_3`,`Win_%_3`)
+  ) %>%
+  data_color(
+    columns = vars(`Win_%_1`,`Win_%_2`,`Win_%_3`),
+    colors = scales::col_numeric(
+      palette = c(
+        "lightgray", "lightgreen", "lightblue"),
+      domain = c(0.2, 0.5,0.82))
+  ) %>%
+  cols_label(
+    Wins_1 = md("Wins"),
+    Losses_1 = md("Losses"),
+    `Win_%_1`= md("Wins %"),
+    Wins_2 = md("Wins"),
+    Losses_2 = md("Losses"),
+    `Win_%_2`= md("Wins %"),
+    Wins_3 = md("Wins"),
+    Losses_3 = md("Losses"),
+    `Win_%_3`= md("Wins %")
+  )
+
+
+NBA_gt_Western
+```
+
+
+**R Packages used**
+
+
+- readr
+- dplyr
+- gt
+
+
+
+**Code, questions and feedback**
+
+The code for this article is published in my [github account](https://github.com/JuanmaMN/gt-package).  
+
+
+Please feel free to reach out for any question or feedback.
