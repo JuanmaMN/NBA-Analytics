@@ -72,3 +72,9 @@ I've used the d3heatmap which easily represents all the players stats. We can ho
 
 
 <img width="947" alt="all-time best players by stats -- regular season vs playoffs" src="https://user-images.githubusercontent.com/37122520/48161578-ccb19600-e2d2-11e8-8acd-958fe531b9b3.png">
+
+
+
+## **6.NBA Team Analysis - Wins VS Points** - [Link](http://rpubs.com/Juanma7/443817) 
+
+<img width="956" alt="nba_smoothlilne" src="https://user-images.githubusercontent.com/37122520/49182648-be471f00-f352-11e8-91e9-20a968562ebd.png">
