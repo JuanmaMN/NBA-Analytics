@@ -78,3 +78,12 @@ I've used the d3heatmap which easily represents all the players stats. We can ho
 ## **6.NBA Team Analysis - Wins VS Points** - [Link](http://rpubs.com/Juanma7/443817) 
 
 <img width="956" alt="nba_smoothlilne" src="https://user-images.githubusercontent.com/37122520/49182648-be471f00-f352-11e8-91e9-20a968562ebd.png">
+
+
+
+
+## **7.Sport- NBA Analytics - Last three seasons analysis** - [Link](https://juanmaintro.netlify.com/2019/05/10/sport-nba-analytics-last-three-seasons-analysis/) 
+
+
+<img width="495" alt="Last_three_seasons" src="https://user-images.githubusercontent.com/37122520/57519418-18d9a380-7313-11e9-855c-d9f58ee6201c.png">
+
