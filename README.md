@@ -112,3 +112,15 @@ I've used the d3heatmap which easily represents all the players stats. We can ho
 <img width="495" alt="Last_three_seasons" src="https://user-images.githubusercontent.com/37122520/57519418-18d9a380-7313-11e9-855c-d9f58ee6201c.png">
 </p>
 <br>
+
+
+
+## **8. NBA - Top 10 All-time leaders in Points** - [Link](https://github.com/JuanmaMN/NBA-Analytics/tree/master/Top%2010%20All-time%20leaders%20in%20Points)
+
+
+
+<br>
+<p align="center">
+<img width="900" alt="Top 10 All time leaders" src="https://user-images.githubusercontent.com/37122520/74045305-67ac8a80-49c4-11ea-87d7-c07eec3ba6f3.png">
+</p>
+<br>
