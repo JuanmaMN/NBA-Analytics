@@ -11,8 +11,11 @@ This analysis contains data until October 21st 2018.
 
 I've used the d3heatmap which easily represents all the players stats. We can hover over on it to see the name of the player, the stats and value.
 
+<br>
+<p align="center">
 <img width="445" alt="all time points leaders" src="https://user-images.githubusercontent.com/37122520/47269247-018fc000-d553-11e8-8a81-e4f765cb848c.png">
-
+</p>
+<br>
 
 
 ## **2. Wins comparison over the last four seasons**  - [Link](http://rpubs.com/Juanma7/431945)
@@ -26,8 +29,12 @@ We can see what teams
 
 I've used the plotly package for the visualization. 
 
-<img width="444" alt="wins over season" src="https://user-images.githubusercontent.com/37122520/47315479-9ae6d100-d63c-11e8-8e7a-571c7f438896.png">
 
+<br>
+<p align="center">
+<img width="444" alt="wins over season" src="https://user-images.githubusercontent.com/37122520/47315479-9ae6d100-d63c-11e8-8e7a-571c7f438896.png">
+</p>
+<br>
 
 ## **3. Average points per season - NBA conference**  - [Link](http://rpubs.com/Juanma7/436813)
 
@@ -37,8 +44,12 @@ We can compare which conference made the highest average number of points by hov
 
 I have used plotly graph for visualization.
 
-<img width="408" alt="nba conference - average points per season" src="https://user-images.githubusercontent.com/37122520/48021644-021e7e00-e131-11e8-83e5-350aecab50d6.png">
 
+<br>
+<p align="center">
+<img width="408" alt="nba conference - average points per season" src="https://user-images.githubusercontent.com/37122520/48021644-021e7e00-e131-11e8-83e5-350aecab50d6.png">
+</p>
+<br>
 
 
 ## **4. Average points per season - NBA conference - Flexdashboard**  - [Link](http://rpubs.com/Juanma7/437528)
@@ -50,8 +61,11 @@ We can compare which conference made the highest average number of points by hov
 I have used plotly graph for visualization. Both graphs use the same data sets.
 
 
+<br>
+<p align="center">
 <img width="954" alt="nba conference - average points per season - flexdashboard" src="https://user-images.githubusercontent.com/37122520/48162285-94ab5280-e2d4-11e8-8abf-299d8e9d4dd2.png">
-
+</p>
+<br>
 
 
 ## **5. All-time best players by stats: Regular Season VS Playoffs - Flexdashboard** - [Link](http://rpubs.com/Juanma7/437571)
@@ -71,10 +85,30 @@ This analysis contains data until October 21st 2018.
 I've used the d3heatmap which easily represents all the players stats. We can hover over on it to see the name of the player, the stats and value.
 
 
-<img width="947" alt="all-time best players by stats -- regular season vs playoffs" src="https://user-images.githubusercontent.com/37122520/48161578-ccb19600-e2d2-11e8-8acd-958fe531b9b3.png">
 
+<br>
+<p align="center">
+<img width="947" alt="all-time best players by stats -- regular season vs playoffs" src="https://user-images.githubusercontent.com/37122520/48161578-ccb19600-e2d2-11e8-8acd-958fe531b9b3.png">
+</p>
+<br>
 
 
 ## **6.NBA Team Analysis - Wins VS Points** - [Link](http://rpubs.com/Juanma7/443817) 
 
+
+<br>
+<p align="center">
 <img width="956" alt="nba_smoothlilne" src="https://user-images.githubusercontent.com/37122520/49182648-be471f00-f352-11e8-91e9-20a968562ebd.png">
+</p>
+<br>
+
+
+## **7.Sport- NBA Analytics - Last three seasons analysis** - [Link](https://juanmaintro.netlify.com/2019/05/10/sport-nba-analytics-last-three-seasons-analysis/) 
+
+
+
+<br>
+<p align="center">
+<img width="495" alt="Last_three_seasons" src="https://user-images.githubusercontent.com/37122520/57519418-18d9a380-7313-11e9-855c-d9f58ee6201c.png">
+</p>
+<br>
