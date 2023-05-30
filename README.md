@@ -14,7 +14,7 @@ Publish my NBA analytical projects
 
 
 
-<img width="924" alt="NBA playoffs" src="https://github.com/JuanmaMN/NBA-Analytics/assets/37122520/6fd12615-093b-4b2f-a697-3f73ca7077ae">
+<img width="924" alt="NBA playoffs" src="https://github.com/JuanmaMN/NBA-Analytics/assets/37122520/59037680-1349-4324-bdcd-eb733960ec48">
 
 
 
