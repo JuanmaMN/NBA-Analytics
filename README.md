@@ -27,6 +27,43 @@ Publish my NBA analytical projects
 <br>
 
 
+## 2022 - 23 NBA Regular Season stats
+
+
+
+<br>
+
+<p align="center">
+
+
+
+<img width="924" alt="Eastern conference" src="https://github.com/JuanmaMN/NBA-Analytics/assets/37122520/348cd6ff-4670-4a90-99a3-ef1253064c4b">
+
+
+  
+</p>
+
+
+
+
+<br>
+
+<p align="center">
+
+
+
+<img width="924" alt="Western conference" src="https://github.com/JuanmaMN/NBA-Analytics/assets/37122520/6272d8f3-32ab-4a14-be71-1bbdd0dcb96e">
+
+
+  
+</p>
+
+
+
+
+<br>
+
+
 ## NBA most improved teams in 2022-23 Regular Season
 
 
