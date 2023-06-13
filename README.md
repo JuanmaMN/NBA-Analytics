@@ -3,6 +3,7 @@
 Publish my NBA analytical projects
 
 - Behance article [link](https://www.behance.net/gallery/172955481/NBA-2022-23-Season-analysis)
+- Figma presentation with the NBA analytics below: [link](https://www.figma.com/proto/B25bhXgfchSmt4ZIUbHyaR/Visualisations?page-id=5%3A0&type=design&node-id=610-215&viewport=452%2C485%2C0.13&scaling=contain)
 
 
 ## 2023 NBA Playoffs
