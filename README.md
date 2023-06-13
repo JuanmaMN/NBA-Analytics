@@ -2,6 +2,7 @@
 
 Publish my NBA analytical projects
 
+- Behance article [link](https://www.behance.net/gallery/172955481/NBA-2022-23-Season-analysis)
 
 
 ## 2023 NBA Playoffs
