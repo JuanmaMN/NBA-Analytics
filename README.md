@@ -65,6 +65,27 @@ Publish my NBA analytical projects
 
 <br>
 
+## Effective Field Goal Percentage for Golden State Warriors in Regular Season since 1996-97
+
+
+
+<br>
+
+<p align="center">
+
+
+
+<img width="924" alt="Screenshot at Jun 15 20-27-33" src="https://github.com/JuanmaMN/NBA-Analytics/assets/37122520/5c6d4336-7e07-4ae8-9235-0e0a43f8d42e">
+
+
+
+  
+</p>
+
+
+
+
+<br>
 
 ## NBA most improved teams in 2022-23 Regular Season
 
