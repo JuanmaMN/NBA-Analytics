@@ -104,6 +104,32 @@ Publish my NBA analytical projects
 </p>
 
 
+<br>
+
+## Three point field percentage analysis for NBA teams qualified for Playoffs in 2022-23 Season
+
+
+
+<br>
+
+<p align="center">
+
+
+<img width="924" alt="NBA three points for Figma" src="https://github.com/JuanmaMN/NBA-Analytics/assets/37122520/c8abbbce-e367-4846-9a06-f081e507408a">
+
+
+  
+</p>
+
+<br>
+
+<p align="center">
+
+
+<img width="924" alt="NBA three point line" src="https://github.com/JuanmaMN/NBA-Analytics/assets/37122520/391e6d8e-7135-490b-93eb-e14ad69a5962">
+
+  
+</p>
 
 
 <br>
